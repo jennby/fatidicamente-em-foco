@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Início - Fatidicamente Em Foco | A Verdade Real em Primeira Mão</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #A00000; /* Um vermelho mais sóbrio para notícias */
+      --secondary-color: #333;
+      --text-color: #1a1a1a;
+      --light-gray: #f5f5f5;
+      --medium-gray: #e0e0e0;
+      --dark-gray: #666;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: var(--light-gray);
+      margin: 0;
+      padding: 0;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 1rem 0;
+      text-align: center;
+      border-bottom: 5px solid var(--secondary-color);
+    }
+
+    header h1 {
+      font-family: 'Merriweather', serif;
+      margin: 0;
+      font-size: 2.8rem;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      margin: 0.5rem 0 0;
+      font-size: 1.1rem;
+      font-style: italic;
+    }
+
+    nav {
+      background-color: var(--secondary-color);
+      padding: 0.75rem 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    nav .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      border-radius: 4px;
+    }
+
+    nav a:hover, nav a.active {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    /* Layout principal para a página inicial */
+    .main-content {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      flex-wrap: wrap; /* Permite que as colunas se quebrem em telas menores */
+    }
+
+    .articles-area {
+      flex: 3; /* Ocupa mais espaço para os artigos principais */
+      min-width: 60%; /* Largura mínima para a área de artigos */
+    }
+
+    .sidebar {
+      flex: 1;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      height: fit-content; /* Ajusta a altura ao conteúdo */
+      min-width: 280px; /* Largura mínima para a sidebar */
+    }
+
+    .sidebar h3 {
+      font-family: 'Merriweather', serif;
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--medium-gray);
+      padding-bottom: 0.5rem;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+
+    .sidebar ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .sidebar ul li a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 400;
+      transition: color 0.3s ease;
+    }
+
+    .sidebar ul li a:hover {
+      color: var(--primary-color);
+    }
+
+    /* Seção de Destaque (Hero Article) */
+    .hero-article {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      margin-bottom: 2rem;
+      border-left: 8px solid var(--primary-color); /* Destaque visual */
+    }
+
+    .hero-article h2 {
+      font-size: 1.6rem;
+      color: var(--dark-gray);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .hero-article h3 {
+      font-size: 2.5rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero-article h3 a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .hero-article h3 a:hover {
+      color: var(--secondary-color);
+    }
+
+    .hero-summary {
+      font-size: 1.15rem;
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+    }
+
+    .read-more {
+      text-align: right;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .read-more a {
+      color: var(--secondary-color);
+      text-decoration: none;
+    }
+
+    .read-more a:hover {
+      text-decoration: underline;
+      color: var(--primary-color);
+    }
+
+    /* Grade de Seções */
+    .section-grid {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .section-grid h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--medium-gray);
+      padding-bottom: 0.5rem;
+    }
+
+    .section-grid h3 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--medium-gray);
+      padding-bottom: 0.5rem;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .article-preview-card {
+      border: 1px solid var(--medium-gray);
+      border-radius: 8px;
+      padding: 1.2rem;
+      background-color: #fdfdfd;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    .article-preview-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+
+    .article-preview-card h4 {
+      font-size: 1.3rem;
+      margin-top: 0;
+      margin-bottom: 0.8rem;
+      line-height: 1.4;
+    }
+
+    .article-preview-card h4 a {
+      color: var(--secondary-color);
+      text-decoration: none;
+    }
+
+    .article-preview-card h4 a:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+
+    .article-preview-card p {
+      font-size: 0.95rem;
+      color: var(--dark-gray);
+      margin-bottom: 1rem;
+      flex-grow: 1; /* Faz os parágrafos ocuparem o espaço disponível */
+    }
+
+    .card-link {
+      display: block;
+      text-align: right;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .card-link:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #fff;
+      background-color: var(--secondary-color);
+      padding: 1.5rem 0;
+      margin-top: 3rem;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .main-content {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .articles-area, .sidebar {
+        flex: none;
+        width: auto;
+        margin: 0 1rem; /* Adiciona margem lateral em telas pequenas */
+        padding: 1.5rem;
+      }
+      .hero-article {
+        padding: 1.5rem;
+      }
+      .hero-article h3 {
+        font-size: 2rem;
+      }
+      .section-grid {
+        padding: 1.5rem;
+      }
+      .grid-container {
+        grid-template-columns: 1fr; /* Empilha os cartões em telas pequenas */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>FATIDICAMENTE EM FOCO</h1>
+    <p><em>"A Verdade Real em Primeira Mão"</em></p>
+  </header>
+
+  <nav>
+    <div class="nav-container">
+      <a href="inicial.html" class="active">Início</a>
+      <a href="ultimas-noticias.html">Últimas Notícias</a> <a href="politica.html">Política</a> <a href="clima-global.html">Clima Global</a>
+      <a href="ciencia-tecnologia.html">Ciência e Tecnologia</a>
+      <a href="realeza.html">Realeza</a>
+      <a href="arquivos-digitais.html">Arquivos Digitais</a> <a href="contato.html">Contato</a> </div>
+  </nav>
+  
+  <div class="main-content">
+    <div class="articles-area">
+      <section class="hero-article">
+        <h2>Destaque: Palácio Base em Ruínas</h2>
+        <img src="imagens/PalacioBase.jpg">
+        <h3><a href="ultimas-noticias.html">ATENTADO ABALA O CORAÇÃO DE INTRABINA</a></h3>
+        <p class="hero-summary">
+         Uma explosão de grandes proporções atingiu hoje o Palácio Base, residência oficial da Casa Real Han Fountain, deixando a estrutura parcialmente destruída e mergulhando a capital em estado de alerta total. Ainda não há confirmação oficial sobre o número de feridos, mas fontes internas relatam múltiplos desabamentos e possíveis vítimas.</p>
+        <p class="read-more"><a href="ultimas-noticias.html">Leia a matéria completa &raquo;</a></p>
+        <div class="grid-container">
+          <div class="article-preview-card">
+            <h3><a href="realeza.html">Realeza: A Família Real Han Fountain</a></h3>
+            <p class="hero-summary">Conheça os membros da Coroa de Intrabina, o Rei Gideon, a Rainha Hyuna, e seus sete príncipes. É com grande satisfação que apresentamos a vocês uma visão mais aprofundada da personalidade de nossos nobres líderes.</p>
+            <a href="realeza.html" class="card-link">Saiba Mais &raquo;</a>
+          </div>
+        </section>
+
+          <section class="section-grid">
+           <h3>Matérias recentes</h3>
+          <div class="article-preview-card">
+            <h4><a href="ciencia-tecnologia.html">Tecnologia: "VISOR" Abolirá as Telas?</a></h4>
+            <p>Um novo tipo de computador emerge dos laboratórios, sem tela, projetando uma interface holográfica reativa. Uma revolução na interação com dados.</p>
+            <a href="ciencia-tecnologia.html" class="card-link">Saiba Mais &raquo;</a>
+          </div>
+          <div class="article-preview-card">
+            <h4><a href="clima-global.html">Clima: Anomalias Meteorológicas Preocupam</a></h4>
+            <p>Tempestades fora de época, calores abruptos e o desaparecimento silencioso das chuvas. Padrões climáticos não seguem previsões, indicando reestruturação planetária.</p>
+            <a href="clima-global.html" class="card-link">Saiba Mais &raquo;</a>
+          </div>
+          <div class="article-preview-card">
+            <h4> O Golpe Celestial – 2030, O Ano em Que a Terra Se Curvou</h4>
+    <p>Nessa série especial, mergulhamos nos anais da história de Intrabina para desvendar os eventos que moldaram nosso reino e o destino de nossa civilização. Do cataclismo celeste à fundação de nossa pátria, cada passo foi guiado por uma força fatídica que ressoa até hoje.</p>
+            <a href="especial.html" class="card-link">Saiba Mais &raquo;</a>
+          </div>
+      </section>
+    </div>
+
+    <aside class="sidebar">
+      <h3>Destaques</h3>
+      <ul>
+        <li><a href="palacio-base-explosao.html">Análise: O Futuro da Monarquia em Meio a Fenômenos Inexplicáveis</a></li>
+        <li><a href="ciencia-tecnologia.html">Tecnologia: Novas Ferramentas de Criptografia para a Imprensa</a></li>
+        <li><a href="clima-global.html">Clima: Padrões Meteorológicos Anômalos Continuam Gerando Preocupação</a></li>
+        <li><a href="realeza.html">Exclusivo: Perfis da Família Real de Intrabina</a></li>
+      </ul>
+
+      <h3>Tópicos Populares</h3>
+      <ul>
+        <li><a href="https://www.wattpad.com/1549492355-intrabina-o-reino-dos-sete-prólogo-um-dia-de-verão" target="_blank">O dia do verão que fez frio</a></li>
+        <li><a href="especial.html">Como o Reino Intrabina surgiu Pós-Meteoro</a></li>
+        </ul>
+    </aside>
+  </div>
+
+  <footer>
+    &copy; 2105 Fatidicamente Em Foco &mdash; Todos os direitos reservados. <br>
+    Siga nossas atualizações em <a href="https://x.com/edieshi" target="_blank">@Ikghknt</a> e participe da investigação <a href="https://twitter.com/hashtag/OperacaoWulline" target="_blank">#OperacaoWulline</a>.
+  </footer>
+
+</body>
+</html>
